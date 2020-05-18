@@ -10,10 +10,10 @@
 
     <context:property-placeholder location="classpath:db.properties"/>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${driver}"/>
-        <property name="jdbcUrl" value="${url}"/>
-        <property name="user" value="${user}"/>
-        <property name="password" value="${password}"/>
+        <property name="driverClass" value="${db.driver}"/>
+        <property name="jdbcUrl" value="${db.url}"/>
+        <property name="user" value="${db.user}"/>
+        <property name="password" value="${db.password}"/>
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
