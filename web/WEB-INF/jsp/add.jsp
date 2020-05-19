@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>书籍添加页</title>
 </head>
 <body>
 <form method="post" action="${pageContext.request.contextPath}/book/addBook">

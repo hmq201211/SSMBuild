@@ -28,6 +28,12 @@ public class BookController {
         model.addAttribute("list", books);
         return "list";
     }
+    @RequestMapping("/getLikeBooks")
+    public String getLikeBooks(String keywords, Model model) {
+        List<Books> books = bookService.queryLikeBooks(keywords);
+        model.addAttribute("list", books);
+        return "list";
+    }
 
     @RequestMapping("/addBook")
     public String addBook(Books books) {

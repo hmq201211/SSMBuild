@@ -28,5 +28,10 @@
         select *
         from ssmbuild.books;
     </select>
+    <select id="queryLikeBooks" resultType="Books" parameterType="string">
+        select *
+        from ssmbuild.books
+        where bookName like '%${keywords}%';
+    </select>
 
 </mapper>

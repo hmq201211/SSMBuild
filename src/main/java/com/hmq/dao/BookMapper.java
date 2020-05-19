@@ -15,4 +15,6 @@ public interface BookMapper {
     Books queryBookById(@Param("id") int id);
 
     List<Books> queryAllBooks();
+
+    List<Books> queryLikeBooks(@Param("keywords") String keywords);
 }

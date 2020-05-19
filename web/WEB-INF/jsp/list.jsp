@@ -19,5 +19,9 @@
     <a href="${pageContext.request.contextPath}/book/toUpdatePage?id=${item.bookId}">更新</a>
 </c:forEach>
 <a href="${pageContext.request.contextPath}/book/toAddPage">添加书籍</a>
+<form method="post" action="${pageContext.request.contextPath}/book/getLikeBooks">
+    <label>模糊查询条件</label> <input name="keywords"/>
+    <input type="submit" value="提交"/>
+</form>
 </body>
 </html>

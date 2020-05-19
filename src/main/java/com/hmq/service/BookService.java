@@ -14,5 +14,7 @@ public interface BookService {
     Books queryBookById(int id);
 
     List<Books> queryAllBooks();
+
+    List<Books> queryLikeBooks(String keywords);
 }
 
