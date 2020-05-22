@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -29,10 +31,11 @@ public class BookController {
         return "list";
     }
     @RequestMapping("/getLikeBooks")
-    public String getLikeBooks(String keywords, Model model) {
+    @ResponseBody
+    public List<Books> getLikeBooks(String keywords) {
         List<Books> books = bookService.queryLikeBooks(keywords);
-        model.addAttribute("list", books);
-        return "list";
+        System.out.println(books);
+        return books;
     }
 
     @RequestMapping("/addBook")

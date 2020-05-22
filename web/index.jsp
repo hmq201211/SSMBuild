@@ -11,8 +11,16 @@
     <title>网上书店</title>
 </head>
 <body>
-<h3>
-    <a href="${pageContext.request.contextPath}/book/getAllBooks">进入书籍列表页</a>
-</h3>
+<form method="post" action="${pageContext.request.contextPath}/user/login">
+    <label>
+        请输入用户名
+        <input name="username" type="text">
+    </label>
+    <label>
+        请输入密码
+        <input name="password" type="password">
+    </label>
+    <input type="submit" value="提交">
+</form>
 </body>
 </html>

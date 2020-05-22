@@ -9,19 +9,46 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+                $("#search").click(function () {
+                    let keywords = $("#keywords").val();
+                    console.log(keywords);
+                    $.post(
+                        "${pageContext.request.contextPath}/book/getLikeBooks",
+                        {"keywords": keywords},
+                        function (data, status) {
+                            if (status === "success") {
+                                let html = "";
+                                for (let item of data) {
+                                    html += ("<p>" + item.bookId + "," + item.bookName + "," + item.bookCounts + "," + item.detail + "</p>")
+                                }
+                                $("#content").html(html);
+                            }
+                        })
+                })
+            }
+        )
+    </script>
     <title>列表页</title>
 </head>
 <body>
 <h1>书籍列表</h1>
-<c:forEach var="item" items="${list}">
-    <p>${item.bookId},${item.bookName},${item.bookCounts},${item.detail}</p>
-    <a href="${pageContext.request.contextPath}/book/delete?id=${item.bookId}">删除</a>
-    <a href="${pageContext.request.contextPath}/book/toUpdatePage?id=${item.bookId}">更新</a>
-</c:forEach>
+<div id="content">
+    <c:forEach var="item" items="${list}">
+        <p>${item.bookId},${item.bookName},${item.bookCounts},${item.detail}</p>
+        <a href="${pageContext.request.contextPath}/book/delete?id=${item.bookId}">删除</a>
+        <a href="${pageContext.request.contextPath}/book/toUpdatePage?id=${item.bookId}">更新</a>
+    </c:forEach>
+</div>
 <a href="${pageContext.request.contextPath}/book/toAddPage">添加书籍</a>
-<form method="post" action="${pageContext.request.contextPath}/book/getLikeBooks">
-    <label>模糊查询条件</label> <input name="keywords"/>
-    <input type="submit" value="提交"/>
-</form>
+
+<label>
+    模糊查询条件
+    <input name="keywords" id="keywords"/>
+</label>
+<button id="search">提交</button>
+
 </body>
 </html>
